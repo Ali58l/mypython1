@@ -10,8 +10,8 @@ class PersonDao:
             if self.conn.is_connected():
                 print('Connected to MySQL database')
                 return self.conn
-        except Error as ex:
-             print(ex)
+        except Error as e:
+             print(e)
 
     def commit(self):
         self.conn.commit()
