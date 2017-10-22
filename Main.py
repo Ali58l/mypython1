@@ -19,11 +19,15 @@ def api_root():
 #     return 'You are reading ' + articleid
 
 if __name__ == '__main__':
-    p1 = Person("44","ali44","lot44") 
-    print p1.getName()
-    p1.toString()
+    id = raw_input("Enter username::")
     personDao = PersonDao()
-    personDao.insertPerson(p1)
+    userExist = personDao.checkUser(id)
+    print userExist
+    if (not userExist):
+        p1 = Person(id,"ali"+ id,"lot"+id) 
+        personDao.insertPerson(p1)
+    else:
+        print "user:: " + id  + " already exist!"
     #connect()
     # app.run()
     

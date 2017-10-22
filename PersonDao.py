@@ -27,3 +27,22 @@ class PersonDao:
             cursor.execute(queryString,(person.id,person.name,person.lname))
         self.commit()
         self.closeConnection()
+
+    def checkUser(self,id):
+        conn = self.connect()
+        if (conn is not None ):
+            queryString = "SELECT count(id) FROM person WHERE id = '%s'" 
+            cursor = conn.cursor(buffered=True)
+            cursor.execute(queryString,id)
+            #numrow = int(cursor.rowcount)
+            numrow = cursor.fetchone()
+            print "show numbers"
+            print numrow
+        self.commit()
+        self.closeConnection()
+        if (numrow[0] > 0 ):
+            return True
+        else:
+            return False
+
+    
